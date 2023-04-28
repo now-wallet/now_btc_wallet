@@ -1,7 +1,7 @@
 import 'package:bdk_flutter/bdk_flutter.dart';
 import 'package:now_btc_wallet/app/core/failures/failures.dart';
 import 'package:now_btc_wallet/app/modules/domain/core/value_objects.dart';
-// import 'package:bdk_wallet/infrastructure/wallet/dto/wallet_dto.dart';
+// import 'package:now_btc_wallet/service/wallet/dto/wallet_dto.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

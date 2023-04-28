@@ -26,4 +26,21 @@ class Persist {
       return false;
     }
   }
+
+  Future<bool> deleteFile(String type) async {
+    try {
+      final accountStoragePath = await getApplicationDocumentsDirectory();
+      final wallets = File('${accountStoragePath.path}/bdk_$type.txt');
+      final exists = await wallets.exists();
+      if (exists) {
+        await wallets.delete();
+        return true;
+      } else {
+        return false;
+      }
+    } on Exception catch (e) {
+      print("Delete file error: ${e.toString()}");
+      return false;
+    }
+  }
 }
