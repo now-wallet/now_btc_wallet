@@ -2,8 +2,8 @@ import 'package:dartz/dartz.dart';
 import 'package:validators/validators.dart';
 import 'package:now_btc_wallet/app/core/failures/failures.dart';
 
-// validate password
-Either<BdkFailure<String>, String> validatePasword(String input) {
+// validates password
+Either<BdkFailure<String>, String> validatePassword(String input) {
   if (input.length >= 3) {
     return Right(input);
   } else {
@@ -11,7 +11,7 @@ Either<BdkFailure<String>, String> validatePasword(String input) {
   }
 }
 
-// validate url
+// validates URL
 Either<BdkFailure<String>, String> validateUrl(String input) {
   if (input.endsWith('')) {
     return Right(input);
@@ -20,10 +20,20 @@ Either<BdkFailure<String>, String> validateUrl(String input) {
   }
 }
 
+// validates InputField
 Either<BdkFailure<String>, String> validateInputField(String input) {
   if (input.endsWith('')) {
     return Right(input);
   } else {
     return const Left(BdkFailure.invalidString());
+  }
+}
+
+// validates Mnemonic
+Either<BdkFailure<String>, String> validateMnemonic(String input) {
+  if (input.length >= 12) {
+    return Right(input);
+  } else {
+    return const Left(BdkFailure.invalidMnemonic());
   }
 }
