@@ -1,5 +1,4 @@
 import 'package:bdk_flutter/bdk_flutter.dart';
-import 'package:flutter/material.dart';
 
 class WalletDto {
   final String mnemonic;
@@ -17,6 +16,25 @@ class WalletDto {
   }
 
   factory WalletDto.fromJson(Map<String, dynamic> json) {
-    return WalletDto(mnemonic: json["mnemonic"], network: json["password"]);
+    return WalletDto(
+      mnemonic: json["mnemonic"],
+      password: json["password"],
+      network: toNetwork(json["network"]),
+    );
   }
+  static Network toNetwork(String network) {
+    switch (network) {
+      case "Testnet":
+        return Network.Testnet;
+      case "Bitcoin":
+        return Network.Bitcoin;
+      case "Regtest":
+        return Network.Regtest;
+      case "Signet":
+        return Network.Signet;
+      default:
+        return Network.Testnet;
+    }
+  }
+//
 }
